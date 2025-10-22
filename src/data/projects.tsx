@@ -236,47 +236,44 @@ export type Project = {
 };
 const projects: Project[] = [
   {
-    id: "codingducks",
-    category: "Coding platform",
-    title: "Coding Ducks",
+    id: "mineral-modeling",
+    category: "3D Modeling & Visualization",
+    title: "Mineral 3D Modeling Platform",
     src: "/assets/projects-screenshots/codingducks/landing.png",
     screenshots: ["landing.png"],
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
         PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.reactQuery,
-        PROJECT_SKILLS.firebase,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.threejs,
       ],
       backend: [
         PROJECT_SKILLS.node,
         PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
+        PROJECT_SKILLS.mongo,
         PROJECT_SKILLS.python,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.sockerio,
       ],
     },
-    live: "https://www.codingducks.xyz/",
-    github: "https://github.com/Naresh-Khatri/Coding-Ducks",
+    live: "https://deanshen.site/mineral-models",
+    github: "https://github.com/Dean-999/mineral-modeling",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Coding ducks = LeetCode + CodePen + CSS Battles
+            Mineral Modeling = 3D Visualization + Scientific Accuracy + Interactive Learning
           </TypographyP>
           <TypographyP className="font-mono ">
-            Coding Ducks is your coding dojo — where you level up your skills,
-            battle in real-time code duels, and earn badges like a true code
-            warrior. Track your progress, flex your brain, and climb the
-            leaderboard. Ready to quack the code?
+            Mineral 3D Modeling Platform is an interactive web application that brings geology to life through stunning 3D visualizations. 
+            Explore crystal structures, mineral properties, and geological formations in an immersive digital environment. 
+            Perfect for students, researchers, and mineral enthusiasts.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Problems </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">3D Crystal Structures</TypographyH3>
           <p className="font-mono mb-2">
-            Solve coding problems similar to LeetCode, enhancing your
-            problem-solving skills across various languages.
+            Explore detailed 3D models of crystal structures with interactive controls. 
+            Rotate, zoom, and examine minerals from every angle with scientific accuracy.
           </p>
           <SlideShow
             images={[
@@ -284,10 +281,10 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/problem.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Ducklets</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Mineral Database</TypographyH3>
           <p className="font-mono mb-2">
-            Collaborate in real-time with others in a multiplayer coding
-            environment, just like CodePen but with a social twist.
+            Comprehensive database of minerals with detailed properties, 
+            chemical compositions, and geological information.
           </p>
           <SlideShow
             images={[
@@ -296,11 +293,10 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/ducklet2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">UI Battles </TypographyH3>
-
+          <TypographyH3 className="my-4 mt-8">Interactive Learning</TypographyH3>
           <p className="font-mono mb-2">
-            Challenge yourself to create UI components with HTML/CSS/JS, and get
-            instant feedback with an automated similarity scoring.
+            Educational modules that combine 3D visualization with interactive quizzes 
+            and learning materials for geology students.
           </p>
           <SlideShow
             images={[
@@ -309,23 +305,22 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/css-battle2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Contests </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Virtual Museum</TypographyH3>
           <p className="font-mono mb-2">
-            Organize or participate in coding competitions. Successfully used to
-            host three contests during college.
+            Virtual museum experience showcasing rare and beautiful mineral specimens 
+            from around the world.
           </p>
           <SlideShow images={[`${BASE_PATH}/codingducks/contests.png`]} />
-          <TypographyH3 className="my-4 mt-8">Playground </TypographyH3>
+          <TypographyH3 className="my-4 mt-8">AR Integration</TypographyH3>
           <p className="font-mono mb-2">
-            Test and execute your code instantly in my versatile online code
-            runner.
+            Augmented reality features that allow users to place 3D mineral models 
+            in their real-world environment.
           </p>
           <SlideShow images={[`${BASE_PATH}/codingducks/playground.png`]} />
-          <TypographyH3 className="my-4 mt-8">Users</TypographyH3>
-
+          <TypographyH3 className="my-4 mt-8">Research Tools</TypographyH3>
           <p className="font-mono mb-2">
-            Track your progress, earn badges, and climb the rankings with
-            detailed user profiles and activity tracking.
+            Advanced tools for researchers including measurement capabilities, 
+            cross-section analysis, and data export features.
           </p>
           <SlideShow
             images={[
@@ -338,35 +333,33 @@ const projects: Project[] = [
     },
   },
   {
-    id: "couponluxury",
-    category: "Coupon site",
-    title: "Coupon Luxury",
+    id: "swimming-tracker",
+    category: "Sports Analytics",
+    title: "Swimming Performance Tracker",
     src: "/assets/projects-screenshots/couponluxury/landing.png",
     screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
-    live: "https://www.couponluxury.com/",
+    live: "https://deanshen.site/swimming-tracker",
     skills: {
       frontend: [
-        PROJECT_SKILLS.js,
+        PROJECT_SKILLS.ts,
         PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.vue,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
       ],
       backend: [
         PROJECT_SKILLS.node,
         PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
-        PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.docker,
+        PROJECT_SKILLS.mongo,
+        PROJECT_SKILLS.python,
       ],
     },
     get content(): JSX.Element {
       return (
         <div>
           <TypographyP className="font-mono ">
-            CouponLuxury is your go-to destination for snagging the best deals
-            without lifting a finger. Whether you&apos;re hunting for the latest
-            discounts or trying to save a buck at your favorite stores,
-            CouponLuxury&apos;s got you covered.
+            Swimming Performance Tracker is a comprehensive analytics platform designed for competitive swimmers. 
+            Track your times, analyze your progress, and optimize your training with detailed performance metrics 
+            and data visualization tools.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
           <p className="font-mono mb-2 mt-4">
