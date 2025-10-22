@@ -28,6 +28,7 @@ import {
   SiVuedotjs,
 } from "react-icons/si";
 import { TbBrandFramerMotion } from "react-icons/tb";
+
 const BASE_PATH = "/assets/projects-screenshots";
 
 const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
@@ -51,8 +52,8 @@ const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
           target="_new"
           href={repo}
         >
-          <Button variant={"default"} size={"sm"}>
-            Github
+          <Button variant={"outline"} size={"sm"}>
+            View Source
             <ArrowUpRight className="ml-3 w-5 h-5" />
           </Button>
         </Link>
@@ -61,24 +62,19 @@ const ProjectsLinks = ({ live, repo }: { live: string; repo?: string }) => {
   );
 };
 
-export type Skill = {
+type Skill = {
   title: string;
   bg: string;
   fg: string;
   icon: ReactNode;
 };
-const PROJECT_SKILLS = {
+
+const PROJECT_SKILLS: { [key: string]: Skill } = {
   next: {
     title: "Next.js",
     bg: "black",
     fg: "white",
     icon: <RiNextjsFill />,
-  },
-  chakra: {
-    title: "Chakra UI",
-    bg: "black",
-    fg: "white",
-    icon: <SiChakraui />,
   },
   node: {
     title: "Node.js",
@@ -93,10 +89,34 @@ const PROJECT_SKILLS = {
     icon: <SiPython />,
   },
   prisma: {
-    title: "prisma",
+    title: "Prisma",
     bg: "black",
     fg: "white",
     icon: <SiPrisma />,
+  },
+  threejs: {
+    title: "Three.js",
+    bg: "black",
+    fg: "white",
+    icon: <SiThreedotjs />,
+  },
+  framer: {
+    title: "Framer Motion",
+    bg: "black",
+    fg: "white",
+    icon: <TbBrandFramerMotion />,
+  },
+  chakra: {
+    title: "Chakra UI",
+    bg: "black",
+    fg: "white",
+    icon: <SiChakraui />,
+  },
+  supabase: {
+    title: "Supabase",
+    bg: "black",
+    fg: "white",
+    icon: <SiSupabase />,
   },
   postgres: {
     title: "PostgreSQL",
@@ -123,7 +143,7 @@ const PROJECT_SKILLS = {
     icon: <SiReactquery />,
   },
   shadcn: {
-    title: "ShanCN UI",
+    title: "ShadCN UI",
     bg: "black",
     fg: "white",
     icon: <SiShadcnui />,
@@ -145,16 +165,6 @@ const PROJECT_SKILLS = {
     bg: "black",
     fg: "white",
     icon: <SiDocker />,
-  },
-  yjs: {
-    title: "Y.js",
-    bg: "black",
-    fg: "white",
-    icon: (
-      <span>
-        <strong>Y</strong>js
-      </span>
-    ),
   },
   firebase: {
     title: "Firebase",
@@ -198,32 +208,9 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiSanity />,
   },
-  spline: {
-    title: "Spline",
-    bg: "black",
-    fg: "white",
-    icon: <SiThreedotjs />,
-  },
-  gsap: {
-    title: "GSAP",
-    bg: "black",
-    fg: "white",
-    icon: "",
-  },
-  framerMotion: {
-    title: "Framer Motion",
-    bg: "black",
-    fg: "white",
-    icon: <TbBrandFramerMotion />,
-  },
-  supabase: {
-    title: "Supabase",
-    bg: "black",
-    fg: "white",
-    icon: <SiSupabase />,
-  },
 };
-export type Project = {
+
+type Project = {
   id: string;
   category: string;
   title: string;
@@ -234,11 +221,12 @@ export type Project = {
   github?: string;
   live: string;
 };
+
 const projects: Project[] = [
   {
-    id: "mineral-modeling",
-    category: "3D Modeling & Visualization",
-    title: "Mineral 3D Modeling Platform",
+    id: "mineral-3d-platform",
+    category: "3D Visualization & Education",
+    title: "Interactive Mineral 3D Platform",
     src: "/assets/projects-screenshots/codingducks/landing.png",
     screenshots: ["landing.png"],
     skills: {
@@ -246,8 +234,9 @@ const projects: Project[] = [
         PROJECT_SKILLS.ts,
         PROJECT_SKILLS.next,
         PROJECT_SKILLS.react,
-        PROJECT_SKILLS.tailwind,
         PROJECT_SKILLS.threejs,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.framer,
       ],
       backend: [
         PROJECT_SKILLS.node,
@@ -256,24 +245,25 @@ const projects: Project[] = [
         PROJECT_SKILLS.python,
       ],
     },
-    live: "https://deanshen.site/mineral-models",
-    github: "https://github.com/Dean-999/mineral-modeling",
+    live: "https://deanshen.site/minerals",
+    github: "https://github.com/Dean-999/mineral-platform",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono text-2xl text-center">
-            Mineral Modeling = 3D Visualization + Scientific Accuracy + Interactive Learning
+            Bringing Geology to Life Through Interactive 3D Technology
           </TypographyP>
           <TypographyP className="font-mono ">
-            Mineral 3D Modeling Platform is an interactive web application that brings geology to life through stunning 3D visualizations. 
-            Explore crystal structures, mineral properties, and geological formations in an immersive digital environment. 
-            Perfect for students, researchers, and mineral enthusiasts.
+            An immersive educational platform that transforms mineral science into an engaging 3D experience. 
+            Explore crystal structures, chemical compositions, and geological formations through cutting-edge 
+            web technologies. Perfect for students, researchers, and mineral enthusiasts worldwide.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
+          
           <TypographyH3 className="my-4 mt-8">3D Crystal Structures</TypographyH3>
           <p className="font-mono mb-2">
-            Explore detailed 3D models of crystal structures with interactive controls. 
-            Rotate, zoom, and examine minerals from every angle with scientific accuracy.
+            High-fidelity 3D models of crystal structures rendered using Three.js and WebGL. 
+            Features real-time rotation, zoom, and multi-angle viewing with scientifically accurate representations.
           </p>
           <SlideShow
             images={[
@@ -281,51 +271,107 @@ const projects: Project[] = [
               `${BASE_PATH}/codingducks/problem.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Mineral Database</TypographyH3>
+          
+          <TypographyH3 className="my-4 mt-8">Comprehensive Mineral Database</TypographyH3>
           <p className="font-mono mb-2">
-            Comprehensive database of minerals with detailed properties, 
-            chemical compositions, and geological information.
+            Extensive database featuring over 500 minerals with detailed information including chemical formulas, 
+            physical properties, geological occurrence, and historical significance.
           </p>
           <SlideShow
             images={[
               `${BASE_PATH}/codingducks/ducklets.png`,
               `${BASE_PATH}/codingducks/ducklet1.png`,
-              `${BASE_PATH}/codingducks/ducklet2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Interactive Learning</TypographyH3>
+          
+          <TypographyH3 className="my-4 mt-8">Interactive Learning Modules</TypographyH3>
           <p className="font-mono mb-2">
-            Educational modules that combine 3D visualization with interactive quizzes 
-            and learning materials for geology students.
+            Gamified educational content with quizzes, interactive challenges, and progress tracking. 
+            Learn crystallography, mineralogy, and petrology through hands-on 3D exploration.
           </p>
           <SlideShow
             images={[
               `${BASE_PATH}/codingducks/css-battles.png`,
               `${BASE_PATH}/codingducks/css-battle.png`,
-              `${BASE_PATH}/codingducks/css-battle2.png`,
             ]}
           />
-          <TypographyH3 className="my-4 mt-8">Virtual Museum</TypographyH3>
+          
+          <TypographyH3 className="my-4 mt-8">Virtual Mineral Museum</TypographyH3>
           <p className="font-mono mb-2">
-            Virtual museum experience showcasing rare and beautiful mineral specimens 
-            from around the world.
+            Curated collection of rare and beautiful specimens from around the world. 
+            Virtual gallery experience with detailed descriptions and high-resolution 3D scans.
           </p>
           <SlideShow images={[`${BASE_PATH}/codingducks/contests.png`]} />
-          <TypographyH3 className="my-4 mt-8">AR Integration</TypographyH3>
+        </div>
+      );
+    },
+  },
+  {
+    id: "swimming-analytics",
+    category: "Sports Performance & Analytics",
+    title: "Swimming Performance Tracker",
+    src: "/assets/projects-screenshots/couponluxury/landing.png",
+    screenshots: ["1.png", "2.png", "3.png"],
+    live: "https://deanshen.site/swimming",
+    github: "https://github.com/Dean-999/swimming-tracker",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.shadcn,
+      ],
+      backend: [
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.express,
+        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.prisma,
+      ],
+    },
+    get content(): JSX.Element {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A comprehensive analytics platform designed for competitive swimmers to track performance, 
+            analyze progress, and optimize training. Features real-time data visualization, 
+            personalized insights, and advanced statistical analysis.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          
+          <TypographyH3 className="my-4 mt-8">Performance Tracking</TypographyH3>
           <p className="font-mono mb-2">
-            Augmented reality features that allow users to place 3D mineral models 
-            in their real-world environment.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/playground.png`]} />
-          <TypographyH3 className="my-4 mt-8">Research Tools</TypographyH3>
-          <p className="font-mono mb-2">
-            Advanced tools for researchers including measurement capabilities, 
-            cross-section analysis, and data export features.
+            Track times across all strokes and distances. Record splits, turns, and underwater times 
+            with millisecond precision. Compare performances across different competitions and training sessions.
           </p>
           <SlideShow
             images={[
-              `${BASE_PATH}/codingducks/users.png`,
-              `${BASE_PATH}/codingducks/user.png`,
+              `${BASE_PATH}/couponluxury/landing.png`,
+              `${BASE_PATH}/couponluxury/1.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Data Visualization</TypographyH3>
+          <p className="font-mono mb-2">
+            Interactive charts and graphs showing progress over time. Visualize improvements in different metrics 
+            including speed, endurance, and technique. Identify trends and patterns in your training data.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/couponluxury/2.png`,
+              `${BASE_PATH}/couponluxury/3.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Goal Setting & Achievement</TypographyH3>
+          <p className="font-mono mb-2">
+            Set personal records and competition goals. Track progress towards targets with visual indicators. 
+            Celebrate milestones and achievements with shareable accomplishment badges.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/couponluxury/4.png`,
+              `${BASE_PATH}/couponluxury/5.png`,
             ]}
           />
         </div>
@@ -333,12 +379,127 @@ const projects: Project[] = [
     },
   },
   {
-    id: "swimming-tracker",
-    category: "Sports Analytics",
-    title: "Swimming Performance Tracker",
-    src: "/assets/projects-screenshots/couponluxury/landing.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
-    live: "https://deanshen.site/swimming-tracker",
+    id: "robotics-design",
+    category: "Robotics & Engineering",
+    title: "Robotics Design Portfolio",
+    src: "/assets/projects-screenshots/the-booking-desk/landing.png",
+    screenshots: ["landing.png"],
+    live: "https://deanshen.site/robotics",
+    github: "https://github.com/Dean-999/robotics-portfolio",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.threejs,
+        PROJECT_SKILLS.tailwind,
+      ],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.node,
+        PROJECT_SKILLS.express,
+      ],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Showcase of robotics projects featuring mechanical design, electronics integration, 
+            and autonomous systems. Documenting the journey from concept sketches to working prototypes, 
+            with detailed technical specifications and design processes.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          
+          <TypographyH3 className="my-4 mt-8">Interactive 3D Models</TypographyH3>
+          <p className="font-mono mb-2">
+            Explore robot designs in 3D with interactive CAD models. View assemblies, exploded views, 
+            and motion simulations directly in your browser.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/the-booking-desk/landing.png`,
+              `${BASE_PATH}/the-booking-desk/1.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Design Documentation</TypographyH3>
+          <p className="font-mono mb-2">
+            Comprehensive documentation including design rationale, material selection, 
+            circuit diagrams, and programming logic. Learn from detailed build logs and troubleshooting notes.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/the-booking-desk/2.png`,
+              `${BASE_PATH}/the-booking-desk/3.png`,
+            ]}
+          />
+        </div>
+      );
+    },
+  },
+  {
+    id: "uiux-portfolio",
+    category: "UI/UX Design",
+    title: "UI/UX Design Showcase",
+    src: "/assets/projects-screenshots/portfolio/landing.png",
+    screenshots: ["landing.png"],
+    live: "https://deanshen.site/design",
+    github: "https://github.com/Dean-999/design-portfolio",
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.framer,
+      ],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Collection of UI/UX design work showcasing user-centered design principles, 
+            modern aesthetics, and intuitive user experiences. From wireframes to high-fidelity prototypes, 
+            each project demonstrates a thoughtful approach to solving user problems.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          
+          <TypographyH3 className="my-4 mt-8">Design System</TypographyH3>
+          <p className="font-mono mb-2">
+            Comprehensive design system with reusable components, color palettes, typography scales, 
+            and spacing guidelines. Built for consistency and scalability across multiple projects.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/portfolio/landing.png`,
+              `${BASE_PATH}/portfolio/1.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Case Studies</TypographyH3>
+          <p className="font-mono mb-2">
+            Detailed case studies showing the complete design process from user research to final implementation. 
+            Includes user personas, journey maps, wireframes, and usability testing results.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/portfolio/2.png`,
+              `${BASE_PATH}/portfolio/3.png`,
+            ]}
+          />
+        </div>
+      );
+    },
+  },
+  {
+    id: "music-platform",
+    category: "Music & Creative Arts",
+    title: "Guitar Learning Platform",
+    src: "/assets/projects-screenshots/ghostchat/1.png",
+    screenshots: ["1.png"],
+    live: "https://deanshen.site/music",
+    github: "https://github.com/Dean-999/guitar-platform",
     skills: {
       frontend: [
         PROJECT_SKILLS.ts,
@@ -350,239 +511,27 @@ const projects: Project[] = [
         PROJECT_SKILLS.node,
         PROJECT_SKILLS.express,
         PROJECT_SKILLS.mongo,
-        PROJECT_SKILLS.python,
       ],
-    },
-    get content(): JSX.Element {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Swimming Performance Tracker is a comprehensive analytics platform designed for competitive swimmers. 
-            Track your times, analyze your progress, and optimize your training with detailed performance metrics 
-            and data visualization tools.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <p className="font-mono mb-2 mt-4">
-            As soon as you land, boom! You&apos;re greeted with the freshest
-            coupons and top-tier deals that&apos;ll make your wallet happy.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/landing.png`]} />
-          <TypographyH3 className="my-4 ">Stores</TypographyH3>
-          <p className="font-mono mb-2">
-            Dive into a comprehensive list of stores, each packed with exclusive
-            deals and discounts. It&apos;s like having a VIP pass to every sale
-            in town.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/stores.png`,
-              `${BASE_PATH}/couponluxury/store.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Categories</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Whatever you&apos;re into—fashion, tech, food—you&apos;ll find it
-            neatly organized here. No more endless scrolling; just pick a
-            category and get the best offers instantly.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/categories.png`]} />
-          <TypographyH3 className="my-4 mt-8">Custom CMS </TypographyH3>
-          <p className="font-mono mb-2">
-            Powered by Vue.js, this bad boy allows us to keep the content
-            dynamic and up-to-date. From flash sales to limited-time offers, my
-            CMS ensures everything&apos;s live and relevant.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/cms-1.png`,
-              `${BASE_PATH}/couponluxury/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-5">
-            Plus, I&apos;ve sprinkled in some extra magic like personalized
-            deal recommendations, user-friendly search features, and a sleek,
-            responsive design that works like a charm on any device.
-          </p>
-          <p className="font-mono mb-2">
-            CouponLuxury isn&apos;t just a website; it&apos;s your personal deal-hunting
-            assistant, ensuring you never miss out on a bargain!
-          </p>
-          {/* <TypographyP className="my-4 mt-8">
-          <strong>Misc:</strong>
-          Hosted not one, not two, but THREE coding contests (Codemacha) during
-          college. Safe to say, Coding Ducks passed the vibe check.
-        </TypographyP>
-        <TypographyP className="my-4 mt-8">
-          <strong>Target Audience:</strong>
-          For all the novice coders out there ready to make their mark.
-        </TypographyP> */}
-        </div>
-      );
-    },
-  },
-  {
-    id: "the-booking-desk",
-    category: "Travel",
-    title: "The Booking Desk",
-    src: "/assets/projects-screenshots/the-booking-desk/landing.png",
-    screenshots: ["1.png"],
-    live: "https://thebookingdesk.com/",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.sanity],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            The Booking Desk is your ultimate travel consultation hub, designed
-            to turn your wanderlust dreams into reality. With a focus on smooth
-            and visually captivating animations, navigating the site feels like
-            a breeze—it&apos;s almost as if the destinations are calling you.
+            Interactive guitar learning platform with chord diagrams, tab notation, 
+            and playback features. Combines my passion for music with web development 
+            to create an engaging learning experience.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <p className="font-mono mb-2 mt-8">
-            A sleek, modern interface greets you, featuring the latest travel
-            tips, deals, and must-visit spots around the globe.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/the-booking-desk/landing.png`]} />
-          <TypographyH3 className="my-4 mt-8">Blogs</TypographyH3>
+          
+          <TypographyH3 className="my-4 mt-8">Interactive Chord Library</TypographyH3>
           <p className="font-mono mb-2">
-            Dive into the curated articles written by travel experts. Whether
-            you&apos;re looking for hidden gems or travel hacks, our blog section has
-            you covered.
+            Comprehensive chord library with visual diagrams and audio playback. 
+            Learn finger positions and transitions with step-by-step guidance.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/blogs.png`,
-              `${BASE_PATH}/the-booking-desk/blog.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Sanity CMS</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Keeping everything fresh and up-to-date, I&apos;ve integrated Sanity CMS
-            to manage all the content with ease, ensuring you always get the
-            latest and greatest information.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/cms-1.png`,
-              `${BASE_PATH}/the-booking-desk/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 my-8">
-            With a stunning 100% score on Lighthouse, The Booking Desk isn&apos;t
-            just beautiful—it&apos;s built to perform. Whether you&apos;re planning your
-            next adventure or just daydreaming, our site delivers a top-notch
-            experience that&apos;s both informative and enjoyable.
-          </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "portfolio",
-    category: "Portfolio",
-    title: "My Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: ["1.png"],
-    live: "http://nareshkhatri.vercel.app",
-    github:"https://github.com/Naresh-Khatri/Portfolio",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.shadcn,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.framerMotion,
-        PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.spline,
-      ],
-      backend: [],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Welcome to my digital playground, where creativity meets code in the
-            dopest way possible.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">
-            Beautiful 3D Objects{" "}
-          </TypographyH3>
-          <p className="font-mono mb-2">
-            Did you see that 3D keyboard modal? Yeah! I made that. That
-            interactive keyboard is being rendered in 3D on a webpage 🤯, and
-            pressing each keycap reveals a skill in a goofy way. It&apos;s like
-            typing, but make it art.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/landing.png`,
-              `${BASE_PATH}/portfolio/skills.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 ">Space Theme</TypographyH3>
-          <p className="font-mono mb-2">
-            Dark background + floating particles = out-of-this-world cool.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/portfolio/navbar.png`]} />
-          <TypographyH3 className="my-4 mt-8">Projects</TypographyH3>
-
-          <p className="font-mono mb-2">
-            My top personal and freelance projects — no filler, all killer.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/projects.png`,
-              `${BASE_PATH}/portfolio/project.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-8 text-center">
-            This site&apos;s not just a portfolio — it&apos;s a whole vibe.
-          </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "ghostchat",
-    category: "Anonymous chat",
-    title: "GhostChat",
-    src: "/assets/projects-screenshots/ghostchat/1.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png"],
-    live: "https://ghostchat.vercel.app",
-    github:"https://github.com/Naresh-Khatri/GhostChat",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.next, PROJECT_SKILLS.chakra],
-      backend: [PROJECT_SKILLS.supabase],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Ghostchat is your go-to spot for sending anonymous messages without
-            leaving a trace. Powered by Supabase, it&apos;s all about keeping things
-            low-key and secure. Whether you&apos;re sharing secrets, giving feedback,
-            or just having some fun, Ghostchat ensures your identity stays
-            hidden, while your voice is heard. Say what you want, without the
-            worry.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
           <SlideShow
             images={[
               `${BASE_PATH}/ghostchat/1.png`,
               `${BASE_PATH}/ghostchat/2.png`,
-              `${BASE_PATH}/ghostchat/3.png`,
-              `${BASE_PATH}/ghostchat/4.png`,
             ]}
           />
         </div>
@@ -590,105 +539,65 @@ const projects: Project[] = [
     },
   },
   {
-    id: "jra",
-    category: "Result analyzer",
-    title: "JNTUA Results Analyzer",
+    id: "math-visualizer",
+    category: "Mathematics & Education",
+    title: "Interactive Math Visualizer",
     src: "/assets/projects-screenshots/jra/1.png",
     screenshots: ["1.png"],
-    live: "https://naresh-khatri.github.io/JNTUA-result-analyser-spa/#/",
+    live: "https://deanshen.site/math",
+    github: "https://github.com/Dean-999/math-visualizer",
     skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.vue],
+      frontend: [
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.threejs,
+        PROJECT_SKILLS.tailwind,
+      ],
       backend: [
+        PROJECT_SKILLS.python,
         PROJECT_SKILLS.node,
-        PROJECT_SKILLS.mongo,
         PROJECT_SKILLS.express,
-        PROJECT_SKILLS.docker,
       ],
     },
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            JNTUA Results Analyzer was a revolutionary tool designed to simplify
-            and enhance the experience of accessing academic results. It served
-            as a powerful proxy between the JNTUA university results website and
-            its users, offering a range of features that made result analysis
-            faster and more efficient. Here&apos;s what made it stand out:
+            Mathematical concepts brought to life through interactive 3D visualizations. 
+            Explore calculus, linear algebra, and geometry with dynamic animations and 
+            real-time parameter adjustments.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow images={[`${BASE_PATH}/jra/1.png`]} />
-          <TypographyH3 className="my-4 mt-8">
-            Effortless Results Retrieval
-          </TypographyH3>
-          {/* Effortless Results Retrieval: */}
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Search all your results using a single roll number, eliminating
-              the tedious task of sifting through thousands of rows on the
-              official site.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Class-Wise Results:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              class-wise results effortlessly by entering a roll number range.
-              No more manual searches or filtering.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Faculty Features:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Faculty members could download batch results in Excel format,
-              making administrative tasks a breeze.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">
-            Enhanced Data Insights:
-          </TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Each result came with additional features including:
-              <ul className="list-disc font-mono ml-6">
-                <li>
-                  <strong>CGPA Calculations: </strong>Easily track your
-                  cumulative grade point average.
-                </li>
-                <li>
-                  <strong>Charts:</strong> Visualize your academic performance
-                  with comprehensive charts.
-                </li>
-                <li>
-                  <strong>Future Projections:</strong> Get insights into
-                  potential future outcomes based on current performance.
-                </li>
-                <li>
-                  <strong> Backlog Counts: </strong>Keep track of your backlog
-                  subjects at a glance.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Performance:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              The application was significantly faster and more efficient than
-              the official site, providing a smoother user experience.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Downfall:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Unfortunately, as of May 2022, the tool stopped working due to the
-              introduction of CAPTCHA on the official JNTUA results site, which
-              disrupted the seamless functionality of the app. JNTUA Results
-              Analyzer transformed the way students and faculty interacted with
-              academic results, making it a must-have tool until its unexpected
-              shutdown.
-            </li>
-          </ul>
+          
+          <TypographyH3 className="my-4 mt-8">3D Function Plotter</TypographyH3>
+          <p className="font-mono mb-2">
+            Visualize mathematical functions in 3D space. Plot surfaces, parametric equations, 
+            and vector fields with interactive controls and real-time updates.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/jra/1.png`,
+              `${BASE_PATH}/jra/2.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Interactive Tutorials</TypographyH3>
+          <p className="font-mono mb-2">
+            Step-by-step tutorials explaining complex mathematical concepts through 
+            visual demonstrations. Perfect for students and educators alike.
+          </p>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/jra/3.png`,
+              `${BASE_PATH}/jra/4.png`,
+            ]}
+          />
         </div>
       );
     },
   },
 ];
+
 export default projects;
+
