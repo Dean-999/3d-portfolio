@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swimming Activities Photos - Dean Shen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg,
+                rgba(186, 230, 253, 0.65) 0%,
+                rgba(221, 214, 254, 0.60) 45%,
+                rgba(252, 231, 243, 0.65) 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .title {
+            font-size: 48px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #475569;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            color: #0f172a;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(59, 130, 246, 0.2);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+        }
+
+        .empty-icon {
+            font-size: 64px;
+            margin-bottom: 24px;
+            opacity: 0.6;
+        }
+
+        .empty-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .empty-description {
+            font-size: 16px;
+            color: #475569;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../../index.html" class="back-btn">
+            ← Back to Main Page
+        </a>
+        
+        <div class="header">
+            <h1 class="title">Swimming Activities</h1>
+            <p class="subtitle">Lifeguard service and sports medicine team collaboration</p>
+        </div>
+
+        <div class="empty-state">
+            <div class="empty-icon">📸</div>
+            <div class="empty-title">Photos Coming Soon</div>
+            <div class="empty-description">
+                Photos from swimming activities will be added here soon. 
+                This will include images from lifeguard duties, sports medicine team collaboration, and related activities.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

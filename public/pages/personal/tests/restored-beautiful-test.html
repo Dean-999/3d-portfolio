@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>恢复美观布局测试</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 测试专用样式 */
+        .test-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            z-index: 10000;
+            min-width: 300px;
+        }
+        
+        .test-status {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .status-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .status-warning {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        .beauty-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 25px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.2);
+        }
+        
+        .beauty-info h3 {
+            margin: 0 0 20px 0;
+            font-size: 32px;
+        }
+        
+        .beauty-info .description {
+            font-size: 18px;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+        
+        /* 留白展示器 */
+        .spacing-demo {
+            background: #f8f9fa;
+            border: 3px dashed #dee2e6;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 25px;
+            text-align: center;
+        }
+        
+        .spacing-demo h4 {
+            color: #495057;
+            margin-bottom: 25px;
+            font-size: 24px;
+        }
+        
+        .spacing-demo p {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+        
+        /* 视觉层次展示 */
+        .visual-hierarchy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .hierarchy-item {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+        
+        .hierarchy-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+        
+        .hierarchy-item h4 {
+            margin: 0 0 20px 0;
+            font-size: 22px;
+        }
+        
+        .hierarchy-item p {
+            margin: 0;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        /* 留白检测器 */
+        .spacing-checker {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <!-- 测试状态指示器 -->
+    <div class="test-indicator">
+        <div style="font-weight: bold; margin-bottom: 10px; text-align: center;">美观布局恢复检测</div>
+        <div id="spacing-status" class="test-status status-info">检测中...</div>
+        <div id="visual-status" class="test-status status-info">检测中...</div>
+        <div id="hierarchy-status" class="test-status status-info">检测中...</div>
+        <div id="beauty-status" class="test-status status-info">检测中...</div>
+    </div>
+
+    <!-- 留白检测器 -->
+    <div class="spacing-checker">
+        <div style="font-weight: bold; margin-bottom: 8px;">留白检测</div>
+        <div id="left-spacing">左侧留白: 检测中...</div>
+        <div id="right-spacing">右侧留白: 检测中...</div>
+        <div id="card-spacing">卡片间距: 检测中...</div>
+    </div>
+
+    <main class="main-content">
+        <div class="content-grid">
+            <!-- 测试标题 -->
+            <div class="card">
+                <h1 class="card-title">美观布局恢复测试</h1>
+                <p class="card-subtitle">展示恢复后的充足左右留白和清晰视觉层次</p>
+            </div>
+
+            <!-- 美观信息 -->
+            <div class="beauty-info">
+                <h3>🎨 美观布局已恢复</h3>
+                <div class="description">
+                    页面现在拥有充足的左右留白和清晰的视觉层次<br>
+                    每个元素都有合适的间距和美观的设计<br>
+                    整体布局平衡和谐，视觉效果优雅
+                </div>
+            </div>
+
+            <!-- 留白展示 -->
+            <div class="card">
+                <h2>📏 留白系统展示</h2>
+                <div class="spacing-demo">
+                    <h4>充足的左右留白</h4>
+                    <p>我们恢复了美观的留白系统，确保页面有充足的左右空间。主容器最大宽度为1200px，内容网格最大宽度为1000px，这样在宽屏设备上能够创造舒适的左右留白。</p>
+                    <p>每个卡片都有充足的内边距（50px 40px），卡片之间的间距为60px，时间轴的内边距为60px 50px，确保所有元素都有足够的呼吸空间。</p>
+                </div>
+            </div>
+
+            <!-- 视觉层次展示 -->
+            <div class="card">
+                <h2>🎯 视觉层次展示</h2>
+                <div class="visual-hierarchy">
+                    <div class="hierarchy-item">
+                        <h4>主标题层次</h4>
+                        <p>使用较大的字体和重量，确保主要信息突出显示</p>
+                    </div>
+                    <div class="hierarchy-item">
+                        <h4>副标题层次</h4>
+                        <p>适中的字体大小，提供补充信息和上下文</p>
+                    </div>
+                    <div class="hierarchy-item">
+                        <h4>正文层次</h4>
+                        <p>清晰的字体和行高，确保内容的可读性</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 时间轴测试 -->
+            <div class="card">
+                <h2>⏰ 时间轴留白测试</h2>
+                <div class="main-timeline">
+                    <div class="timeline-milestone" data-age="1">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">开始阶段 - 充足的留白</div>
+                        <div class="milestone-age">步骤 1 - 视觉层次清晰</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="2">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">进行中 - 平衡的间距</div>
+                        <div class="milestone-age">步骤 2 - 美观的布局</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="3">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">完成阶段 - 完美的留白</div>
+                        <div class="milestone-age">步骤 3 - 优雅的设计</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 活动卡片测试 -->
+            <div class="card">
+                <h2>🚀 活动卡片留白测试</h2>
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <div class="activity-icon">🎨</div>
+                        <div class="activity-title">设计美学 - 留白的重要性</div>
+                        <div class="activity-subtitle">留白不仅仅是空白空间，它是设计的重要组成部分，能够创造视觉呼吸感，让内容更容易阅读和理解</div>
+                        <div class="activity-tag">DESIGN PRINCIPLES</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">📐</div>
+                        <div class="activity-title">间距系统</div>
+                        <div class="activity-subtitle">精心设计的间距系统确保每个元素都有足够的呼吸空间，创造平衡和谐的视觉效果</div>
+                        <div class="activity-tag">SPACING SYSTEM</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">✨</div>
+                        <div class="activity-title">视觉层次</div>
+                        <div class="activity-subtitle">通过合理的留白和间距，我们能够创造清晰的视觉层次，引导用户的注意力流动</div>
+                        <div class="activity-tag">VISUAL HIERARCHY</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计卡片测试 -->
+            <div class="card">
+                <h2>📊 统计卡片留白测试</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-number">留白</div>
+                        <div class="stat-label">精心设计的留白系统 - 创造舒适的视觉体验</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📏</div>
+                        <div class="stat-number">间距</div>
+                        <div class="stat-label">平衡的间距设计 - 确保元素之间有足够的呼吸空间</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎨</div>
+                        <div class="stat-number">美观</div>
+                        <div class="stat-label">优雅的视觉设计 - 通过留白创造和谐的布局</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 留白效果展示 -->
+            <div class="card">
+                <h2>🌟 留白效果展示</h2>
+                <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 40px; border-radius: 25px; margin: 30px 0;">
+                    <h3 style="color: #495057; margin-bottom: 25px;">留白的艺术</h3>
+                    <p style="color: #6c757d; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">
+                        留白是设计中最重要的元素之一。它不仅仅是空白空间，而是创造视觉呼吸感、突出重要内容、建立清晰层次的关键工具。
+                    </p>
+                    <p style="color: #6c757d; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">
+                        通过精心设计的留白系统，我们能够创造舒适的阅读体验，让用户更容易理解信息，同时保持页面的美观和优雅。
+                    </p>
+                    <p style="color: #6c757d; line-height: 1.8; font-size: 16px;">
+                        留白不是浪费空间，而是投资于用户体验和视觉美感。现在页面已经恢复了充足的美观留白！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 留白状态检测
+        function checkSpacing() {
+            const mainContent = document.querySelector('.main-content');
+            const contentGrid = document.querySelector('.content-grid');
+            
+            if (mainContent && contentGrid) {
+                const mainWidth = mainContent.offsetWidth;
+                const gridWidth = contentGrid.offsetWidth;
+                const windowWidth = window.innerWidth;
+                
+                // 计算左右留白
+                const leftSpacing = (windowWidth - mainWidth) / 2;
+                const rightSpacing = leftSpacing;
+                
+                if (leftSpacing >= 100 && rightSpacing >= 100) {
+                    document.getElementById('spacing-status').className = 'test-status status-success';
+                    document.getElementById('spacing-status').textContent = '✅ 留白充足';
+                } else if (leftSpacing >= 50 && rightSpacing >= 50) {
+                    document.getElementById('spacing-status').className = 'test-status status-warning';
+                    document.getElementById('spacing-status').textContent = '⚠️ 留白一般';
+                } else {
+                    document.getElementById('spacing-status').className = 'test-status status-warning';
+                    document.getElementById('spacing-status').textContent = '❌ 留白不足';
+                }
+                
+                // 更新留白检测器
+                document.getElementById('left-spacing').textContent = `左侧留白: ${Math.round(leftSpacing)}px`;
+                document.getElementById('right-spacing').textContent = `右侧留白: ${Math.round(rightSpacing)}px`;
+            }
+        }
+
+        // 视觉效果检测
+        function checkVisual() {
+            const elements = document.querySelectorAll('.card, .activity-card, .stat-card');
+            let visualScore = 0;
+            
+            elements.forEach(element => {
+                const style = window.getComputedStyle(element);
+                if (style.borderRadius && style.boxShadow && style.transition) {
+                    visualScore += 15;
+                }
+            });
+            
+            if (visualScore >= 80) {
+                document.getElementById('visual-status').className = 'test-status status-success';
+                document.getElementById('visual-status').textContent = '✅ 视觉效果优秀';
+            } else if (visualScore >= 60) {
+                document.getElementById('visual-status').className = 'test-status status-warning';
+                document.getElementById('visual-status').textContent = '⚠️ 视觉效果一般';
+            } else {
+                document.getElementById('visual-status').className = 'test-status status-warning';
+                document.getElementById('visual-status').textContent = '❌ 视觉效果不足';
+            }
+        }
+
+        // 层次结构检测
+        function checkHierarchy() {
+            const headings = document.querySelectorAll('h1, h2, h3, h4');
+            let hierarchyScore = 0;
+            
+            headings.forEach((heading, index) => {
+                const style = window.getComputedStyle(heading);
+                const fontSize = parseInt(style.fontSize);
+                const fontWeight = parseInt(style.fontWeight);
+                
+                if (fontSize >= 20 && fontWeight >= 600) {
+                    hierarchyScore += 20;
+                }
+            });
+            
+            if (hierarchyScore >= 80) {
+                document.getElementById('hierarchy-status').className = 'test-status status-success';
+                document.getElementById('hierarchy-status').textContent = '✅ 层次结构清晰';
+            } else if (hierarchyScore >= 60) {
+                document.getElementById('hierarchy-status').className = 'test-status status-warning';
+                document.getElementById('hierarchy-status').textContent = '⚠️ 层次结构一般';
+            } else {
+                document.getElementById('hierarchy-status').className = 'test-status status-warning';
+                document.getElementById('hierarchy-status').textContent = '❌ 层次结构模糊';
+            }
+        }
+
+        // 美观度检测
+        function checkBeauty() {
+            const mainContent = document.querySelector('.main-content');
+            const contentGrid = document.querySelector('.content-grid');
+            
+            if (mainContent && contentGrid) {
+                const mainPadding = parseInt(window.getComputedStyle(mainContent).padding);
+                const gridGap = parseInt(window.getComputedStyle(contentGrid).gap);
+                
+                if (mainPadding >= 60 && gridGap >= 50) {
+                    document.getElementById('beauty-status').className = 'test-status status-success';
+                    document.getElementById('beauty-status').textContent = '✅ 美观度优秀';
+                } else if (mainPadding >= 40 && gridGap >= 30) {
+                    document.getElementById('beauty-status').className = 'test-status status-warning';
+                    document.getElementById('beauty-status').textContent = '⚠️ 美观度一般';
+                } else {
+                    document.getElementById('beauty-status').className = 'test-status status-warning';
+                    document.getElementById('beauty-status').textContent = '❌ 美观度不足';
+                }
+            }
+        }
+
+        // 实时间距检测
+        function updateSpacingInfo() {
+            const cardSpacing = document.getElementById('card-spacing');
+            
+            // 卡片间距
+            const contentGrid = document.querySelector('.content-grid');
+            if (contentGrid) {
+                const gap = window.getComputedStyle(contentGrid).gap;
+                cardSpacing.textContent = `卡片间距: ${gap}`;
+            }
+        }
+
+        // 页面加载完成后执行检测
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                checkSpacing();
+                checkVisual();
+                checkHierarchy();
+                checkBeauty();
+                updateSpacingInfo();
+            }, 500);
+        });
+
+        // 窗口大小改变时重新检测
+        window.addEventListener('resize', function() {
+            setTimeout(() => {
+                checkSpacing();
+                checkVisual();
+                checkHierarchy();
+                checkBeauty();
+                updateSpacingInfo();
+            }, 100);
+        });
+
+        // 定期检测
+        setInterval(() => {
+            checkSpacing();
+            checkVisual();
+            checkHierarchy();
+            checkBeauty();
+            updateSpacingInfo();
+        }, 5000);
+
+        // 添加交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为时间轴里程碑添加点击效果
+            const milestones = document.querySelectorAll('.timeline-milestone');
+            milestones.forEach(milestone => {
+                milestone.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // 为卡片添加悬停效果
+            const cards = document.querySelectorAll('.card, .activity-card, .stat-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+
+            // 为层次项目添加点击效果
+            const hierarchyItems = document.querySelectorAll('.hierarchy-item');
+            hierarchyItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05) rotate(2deg)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1) rotate(0deg)';
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

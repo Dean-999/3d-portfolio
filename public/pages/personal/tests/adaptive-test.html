@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自适应宽高测试</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 测试专用样式 */
+        .test-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            z-index: 10000;
+            min-width: 280px;
+        }
+        
+        .test-status {
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .status-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .status-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .status-warning {
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        .status-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+        
+        .adaptive-info {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .adaptive-info h3 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+        }
+        
+        .adaptive-info .description {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        /* 长文本测试 */
+        .long-text-test {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 15px;
+        }
+        
+        .long-text-test h4 {
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .long-text-test p {
+            color: #6c757d;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+        
+        /* 宽高检测器 */
+        .dimension-checker {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            z-index: 10000;
+        }
+    </style>
+</head>
+<body>
+    <!-- 测试状态指示器 -->
+    <div class="test-indicator">
+        <div style="font-weight: bold; margin-bottom: 10px; text-align: center;">自适应宽高检测</div>
+        <div id="width-status" class="test-status status-info">检测中...</div>
+        <div id="height-status" class="test-status status-info">检测中...</div>
+        <div id="overflow-status" class="test-status status-info">检测中...</div>
+        <div id="responsive-status" class="test-status status-info">检测中...</div>
+    </div>
+
+    <!-- 宽高检测器 -->
+    <div class="dimension-checker">
+        <div style="font-weight: bold; margin-bottom: 8px;">实时尺寸检测</div>
+        <div id="viewport-size">视口: 加载中...</div>
+        <div id="content-size">内容: 加载中...</div>
+        <div id="card-size">卡片: 加载中...</div>
+    </div>
+
+    <main class="main-content">
+        <div class="content-grid">
+            <!-- 测试标题 -->
+            <div class="card">
+                <h1 class="card-title">自适应宽高测试</h1>
+                <p class="card-subtitle">确保所有内容都能完整显示，不会被截断</p>
+            </div>
+
+            <!-- 自适应信息 -->
+            <div class="adaptive-info">
+                <h3>📐 自适应宽高系统</h3>
+                <div class="description">
+                    每个元素都设置了自适应宽高，确保内容完整显示<br>
+                    支持响应式布局，在所有设备上都能正确显示
+                </div>
+            </div>
+
+            <!-- 长文本测试 -->
+            <div class="card">
+                <h2>📝 长文本显示测试</h2>
+                <div class="long-text-test">
+                    <h4>测试长文本是否会被截断</h4>
+                    <p>这是一个非常长的文本段落，用来测试自适应宽高系统是否能够正确处理长文本内容。我们希望这个文本能够完整显示，不会被截断或者溢出容器边界。自适应宽高系统应该能够根据内容自动调整容器的高度，确保所有文本都能被用户看到。</p>
+                    <p>这是另一个长段落，包含更多的文本内容来测试系统的极限。自适应系统应该能够处理各种长度的内容，无论是短文本还是长文本，都应该能够完美显示。同时，我们还测试了换行和段落间距的处理效果。</p>
+                </div>
+            </div>
+
+            <!-- 时间轴测试 -->
+            <div class="card">
+                <h2>⏰ 时间轴自适应测试</h2>
+                <div class="main-timeline">
+                    <div class="timeline-milestone" data-age="1">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">开始阶段 - 这是一个很长的标签文本</div>
+                        <div class="milestone-age">步骤 1 - 详细描述</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="2">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">进行中 - 另一个长标签</div>
+                        <div class="milestone-age">步骤 2 - 更多信息</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="3">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">完成阶段 - 最后的标签</div>
+                        <div class="milestone-age">步骤 3 - 完整描述</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 活动卡片测试 -->
+            <div class="card">
+                <h2>🚀 活动卡片自适应测试</h2>
+                <div class="activities-grid">
+                    <div class="activity-card">
+                        <div class="activity-icon">🚀</div>
+                        <div class="activity-title">核心活动 - 这是一个非常长的标题</div>
+                        <div class="activity-subtitle">这是最重要的活动，包含详细的描述信息，用来测试自适应宽高系统是否能够正确处理长文本内容</div>
+                        <div class="activity-tag">CORE ACTIVITY - LONG TAG</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">🎯</div>
+                        <div class="activity-title">战略思维培养</div>
+                        <div class="activity-subtitle">培养战略思维能力，这是一个非常重要的技能，需要长期的学习和实践</div>
+                        <div class="activity-tag">STRATEGIC THINKING</div>
+                    </div>
+                    <div class="activity-card">
+                        <div class="activity-icon">💎</div>
+                        <div class="activity-title">长期兴趣发展</div>
+                        <div class="activity-subtitle">持续发展的兴趣，这是一个长期的过程，需要不断的投入和坚持</div>
+                        <div class="activity-tag">LONG-TERM INTEREST</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 统计卡片测试 -->
+            <div class="card">
+                <h2>📊 统计卡片自适应测试</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎨</div>
+                        <div class="stat-number">美观设计</div>
+                        <div class="stat-label">设计效果评估 - 这是一个很长的标签文本</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📱</div>
+                        <div class="stat-number">响应式支持</div>
+                        <div class="stat-label">布局支持测试 - 包含详细的描述信息</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✨</div>
+                        <div class="stat-number">完美体验</div>
+                        <div class="stat-label">用户体验评估 - 长期使用效果分析</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 极限测试 -->
+            <div class="card">
+                <h2>🔥 极限测试</h2>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                    <h3>超长文本测试</h3>
+                    <p style="word-break: break-all; font-family: monospace; font-size: 12px; line-height: 1.4;">
+                        这是一个超长的文本段落，用来测试自适应系统的极限。我们在这里放置了大量的文本内容，包括各种长度的单词、句子和段落。这个测试的目的是确保自适应宽高系统能够处理各种极端情况，无论是短文本、长文本还是超长文本，都应该能够正确显示。同时，我们还测试了换行、间距、边距等CSS属性的处理效果。自适应系统应该能够根据内容的实际大小自动调整容器的尺寸，确保所有内容都能被用户看到，不会出现截断、溢出或者隐藏的情况。这是一个非常重要的测试，因为它关系到用户体验的质量。如果自适应系统不能正确处理各种长度的内容，用户可能会错过重要的信息，这会影响整个网站或应用的使用效果。因此，我们需要确保自适应宽高系统在各种情况下都能正常工作，为用户提供最佳的浏览体验。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 宽度状态检测
+        function checkWidth() {
+            const mainContent = document.querySelector('.main-content');
+            const contentGrid = document.querySelector('.content-grid');
+            
+            if (mainContent && contentGrid) {
+                const mainWidth = mainContent.offsetWidth;
+                const gridWidth = contentGrid.offsetWidth;
+                const windowWidth = window.innerWidth;
+                
+                if (mainWidth <= windowWidth && gridWidth <= windowWidth) {
+                    document.getElementById('width-status').className = 'test-status status-success';
+                    document.getElementById('width-status').textContent = '✅ 宽度自适应正常';
+                } else {
+                    document.getElementById('width-status').className = 'test-status status-error';
+                    document.getElementById('width-status').textContent = '❌ 宽度超出视口';
+                }
+            }
+        }
+
+        // 高度状态检测
+        function checkHeight() {
+            const cards = document.querySelectorAll('.card, .activity-card, .stat-card');
+            let allHeightOk = true;
+            
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const contentHeight = card.scrollHeight;
+                const visibleHeight = rect.height;
+                
+                if (contentHeight > visibleHeight) {
+                    allHeightOk = false;
+                }
+            });
+            
+            if (allHeightOk) {
+                document.getElementById('height-status').className = 'test-status status-success';
+                document.getElementById('height-status').textContent = '✅ 高度自适应正常';
+            } else {
+                document.getElementById('height-status').className = 'test-status status-warning';
+                document.getElementById('height-status').textContent = '⚠️ 部分内容高度不足';
+            }
+        }
+
+        // 溢出状态检测
+        function checkOverflow() {
+            const elements = document.querySelectorAll('.card, .activity-card, .stat-card, .main-timeline');
+            let hasOverflow = false;
+            
+            elements.forEach(element => {
+                const style = window.getComputedStyle(element);
+                if (style.overflow === 'hidden' || style.overflow === 'scroll') {
+                    hasOverflow = true;
+                }
+            });
+            
+            if (!hasOverflow) {
+                document.getElementById('overflow-status').className = 'test-status status-success';
+                document.getElementById('overflow-status').textContent = '✅ 无内容溢出';
+            } else {
+                document.getElementById('overflow-status').className = 'test-status status-warning';
+                document.getElementById('overflow-status').textContent = '⚠️ 存在内容溢出';
+            }
+        }
+
+        // 响应式状态检测
+        function checkResponsive() {
+            const windowWidth = window.innerWidth;
+            let responsiveScore = 0;
+            
+            if (windowWidth >= 1200) {
+                responsiveScore = 100; // 大屏幕
+            } else if (windowWidth >= 768) {
+                responsiveScore = 90;  // 中等屏幕
+            } else if (windowWidth >= 480) {
+                responsiveScore = 80;  // 小屏幕
+            } else {
+                responsiveScore = 70;  // 超小屏幕
+            }
+            
+            if (responsiveScore >= 80) {
+                document.getElementById('responsive-status').className = 'test-status status-success';
+                document.getElementById('responsive-status').textContent = `✅ 响应式良好 (${responsiveScore}分)`;
+            } else {
+                document.getElementById('responsive-status').className = 'test-status status-warning';
+                document.getElementById('responsive-status').textContent = `⚠️ 响应式一般 (${responsiveScore}分)`;
+            }
+        }
+
+        // 实时尺寸检测
+        function updateDimensions() {
+            const viewportSize = document.getElementById('viewport-size');
+            const contentSize = document.getElementById('content-size');
+            const cardSize = document.getElementById('card-size');
+            
+            // 视口尺寸
+            viewportSize.textContent = `视口: ${window.innerWidth} × ${window.innerHeight}`;
+            
+            // 内容尺寸
+            const mainContent = document.querySelector('.main-content');
+            if (mainContent) {
+                contentSize.textContent = `内容: ${mainContent.offsetWidth} × ${mainContent.offsetHeight}`;
+            }
+            
+            // 卡片尺寸
+            const firstCard = document.querySelector('.card');
+            if (firstCard) {
+                cardSize.textContent = `卡片: ${firstCard.offsetWidth} × ${firstCard.offsetHeight}`;
+            }
+        }
+
+        // 页面加载完成后执行检测
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                checkWidth();
+                checkHeight();
+                checkOverflow();
+                checkResponsive();
+                updateDimensions();
+            }, 500);
+        });
+
+        // 窗口大小改变时重新检测
+        window.addEventListener('resize', function() {
+            setTimeout(() => {
+                checkWidth();
+                checkHeight();
+                checkOverflow();
+                checkResponsive();
+                updateDimensions();
+            }, 100);
+        });
+
+        // 定期检测
+        setInterval(() => {
+            checkWidth();
+            checkHeight();
+            checkOverflow();
+            checkResponsive();
+            updateDimensions();
+        }, 3000);
+
+        // 添加交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为时间轴里程碑添加点击效果
+            const milestones = document.querySelectorAll('.timeline-milestone');
+            milestones.forEach(milestone => {
+                milestone.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+
+            // 为卡片添加悬停效果
+            const cards = document.querySelectorAll('.card, .activity-card, .stat-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

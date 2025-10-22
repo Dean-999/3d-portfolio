@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Test - SamuelQ Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            width: 100%;
+            height: 400px;
+            border: 2px dashed #ccc;
+            margin: 10px 0;
+            position: relative;
+        }
+        .age-activity-chart {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            margin: 20px 0;
+        }
+        .chart-title {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 30px;
+        }
+        .chart-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 12px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+            border: 2px solid white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .legend-color.study { background: #4A90E2; }
+        .legend-color.go { background: #7ED321; }
+        .legend-color.minerals { background: #50E3C2; }
+        .legend-color.swimming { background: #F5A623; }
+        .legend-color.guitar { background: #BD10E0; }
+        .legend-color.robotics { background: #FF6B6B; }
+        .legend-color.uiux { background: #4ECDC4; }
+        .legend-color.coding { background: #96CEB4; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chart Test Page - SamuelQ Personal Website</h1>
+    
+    <div class="test-section">
+        <h2>Time Distribution Chart Test</h2>
+        <p>Testing if time distribution chart displays correctly:</p>
+        <div class="chart-container">
+            <canvas id="timeChart"></canvas>
+        </div>
+        <button onclick="testTimeChart()">Test Time Chart</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Age Activity Distribution Chart Test</h2>
+        <p>Testing if age activity distribution chart displays correctly:</p>
+        <div class="age-activity-chart">
+            <h3 class="chart-title">Age Activity Distribution</h3>
+            <div class="chart-container">
+                <canvas id="ageChart"></canvas>
+            </div>
+            
+            <!-- Chart Legend -->
+            <div class="chart-legend">
+                <div class="legend-item">
+                    <span class="legend-color study"></span>
+                    <span>Learning</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color go"></span>
+                    <span>Go Strategy</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color minerals"></span>
+                    <span>Mineral Interest</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color swimming"></span>
+                    <span>Swimming</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color guitar"></span>
+                    <span>Guitar</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color robotics"></span>
+                    <span>Robotics & 3D</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color uiux"></span>
+                    <span>UI/UX Design</span>
+                </div>
+                <div class="legend-item">
+                    <span class="legend-color coding"></span>
+                    <span>Coding</span>
+                </div>
+            </div>
+        </div>
+        <button onclick="testAgeChart()">Test Age Chart</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Console Logs</h2>
+        <div id="logOutput" class="log"></div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Debug logging function
+        function log(message) {
+            const logOutput = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            logOutput.textContent += `[${timestamp}] ${message}\n`;
+            logOutput.scrollTop = logOutput.scrollHeight;
+            console.log(message);
+        }
+
+        // Test time chart
+        function testTimeChart() {
+            try {
+                const ctx = document.getElementById('timeChart');
+                if (!ctx) {
+                    log('ERROR: Time chart canvas not found');
+                    return;
+                }
+
+                log('Testing time chart...');
+                
+                // Manually call initialization function
+                if (typeof initTimeChart === 'function') {
+                    initTimeChart();
+                    log('SUCCESS: Time chart initialization function called');
+                } else {
+                    log('ERROR: initTimeChart function not found');
+                }
+            } catch (error) {
+                log(`ERROR: Failed to test time chart: ${error.message}`);
+            }
+        }
+
+        // Test age chart
+        function testAgeChart() {
+            try {
+                const ctx = document.getElementById('ageChart');
+                if (!ctx) {
+                    log('ERROR: Age chart canvas not found');
+                    return;
+                }
+
+                log('Testing age chart...');
+                
+                // Manually call initialization function
+                if (typeof initAgeChart === 'function') {
+                    initAgeChart();
+                    log('SUCCESS: Age chart initialization function called');
+                } else {
+                    log('ERROR: initAgeChart function not found');
+                }
+            } catch (error) {
+                log(`ERROR: Failed to test age chart: ${error.message}`);
+            }
+        }
+
+        // Clear log
+        function clearLog() {
+            document.getElementById('logOutput').textContent = '';
+        }
+
+        // Page load logging
+        window.addEventListener('load', function() {
+            log('Page loaded successfully');
+            log('Checking component availability...');
+            
+            // Check Chart.js
+            if (typeof Chart !== 'undefined') {
+                log('SUCCESS: Chart.js is available');
+            } else {
+                log('ERROR: Chart.js is not available');
+            }
+            
+            // Check initialization functions
+            if (typeof initTimeChart === 'function') {
+                log('SUCCESS: initTimeChart function is available');
+            } else {
+                log('ERROR: initTimeChart function is not available');
+            }
+            
+            if (typeof initAgeChart === 'function') {
+                log('SUCCESS: initAgeChart function is available');
+            } else {
+                log('ERROR: initAgeChart function is not available');
+            }
+            
+            log('Check completed');
+        });
+
+        // Error handling
+        window.addEventListener('error', function(event) {
+            log(`ERROR: ${event.error.message} at ${event.filename}:${event.lineno}`);
+        });
+    </script>
+</body>
+</html>

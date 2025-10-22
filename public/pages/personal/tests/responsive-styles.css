@@ -1,0 +1,786 @@
+/* 响应式布局CSS - 确保在所有设备上居中显示 */
+
+/* 重置所有默认样式 */
+* {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 基础HTML和Body设置 */
+html, body {
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    overflow-x: hidden !important;
+}
+
+body {
+    font-family: 'Bree Serif', serif;
+    background-color: #f5f5f5;
+    color: #000000;
+    line-height: 1.6;
+}
+
+/* 主容器 - 强制居中 */
+.main-content {
+    width: 100% !important;
+    max-width: 1400px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+/* 内容网格 - 强制居中 */
+.content-grid {
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    justify-items: center !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+/* 卡片基础样式 - 强制居中 */
+.card {
+    width: 100% !important;
+    max-width: 100% !important;
+    background-color: #ffffff;
+    border-radius: 25px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    margin: 0 auto !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+/* 卡片标题 */
+.card-title {
+    font-size: clamp(24px, 5vw, 42px);
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #1a1a1a;
+    line-height: 1.2;
+}
+
+/* 卡片副标题 */
+.card-subtitle {
+    font-size: clamp(14px, 3vw, 18px);
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 主要时间轴 - 强制居中 */
+.main-timeline {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 40px auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    position: relative !important;
+    padding: 40px 20px 30px 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+    border-radius: 25px;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+    overflow-x: auto;
+}
+
+/* 主页面时间轴 */
+.travel-timeline-mini {
+    width: 100% !important;
+    margin: 30px auto !important;
+    text-align: center !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+/* 时间轴连接线 */
+.main-timeline::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* 时间轴里程碑 */
+.timeline-milestone {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0 10px;
+    min-width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 里程碑圆点 */
+.milestone-dot {
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border: 3px solid #667eea;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 3;
+}
+
+/* 里程碑标签 */
+.milestone-label {
+    background: #ffffff;
+    color: #667eea;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: clamp(12px, 2.5vw, 14px);
+    font-weight: 600;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+/* 里程碑年龄 */
+.milestone-age {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* 活动网格 */
+.activities-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 25px !important;
+    margin-top: 30px !important;
+    justify-items: center !important;
+}
+
+/* 主页面活动卡片 */
+.activity-card {
+    width: 100% !important;
+    max-width: 350px !important;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 0 auto !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+/* 活动卡片 */
+.activity-card {
+    width: 100% !important;
+    max-width: 350px !important;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 0 auto !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+.activity-card:hover {
+    transform: translateY(-5px);
+}
+
+/* 活动图标 */
+.activity-icon {
+    font-size: clamp(32px, 6vw, 48px);
+    margin-bottom: 15px;
+}
+
+/* 活动标题 */
+.activity-title {
+    font-size: clamp(16px, 3.5vw, 20px);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+}
+
+/* 活动副标题 */
+.activity-subtitle {
+    font-size: clamp(12px, 2.5vw, 14px);
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+/* 活动标签 */
+.activity-tag {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* 统计卡片网格 */
+.stats-grid,
+.travel-stats-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 20px !important;
+    margin: 30px 0 !important;
+    justify-items: center !important;
+}
+
+/* 统计卡片 */
+.stat-card,
+.stat-item {
+    width: 100% !important;
+    max-width: 250px !important;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 0 auto !important;
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+}
+
+/* 统计图标 */
+.stat-icon {
+    font-size: clamp(24px, 5vw, 32px);
+    margin-bottom: 10px;
+}
+
+/* 统计数字 */
+.stat-number {
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+/* 统计标签 */
+.stat-label {
+    font-size: clamp(12px, 2.5vw, 14px);
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* 响应式断点 */
+
+/* 大屏幕 (1200px+) */
+@media (min-width: 1200px) {
+    .main-content {
+        padding: 40px 20px;
+    }
+    
+    .content-grid {
+        gap: 40px;
+    }
+    
+    .card {
+        padding: 50px 40px;
+        border-radius: 50px;
+    }
+    
+    .main-timeline {
+        padding: 60px 40px 40px 40px;
+        border-radius: 30px;
+    }
+    
+    .activities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+}
+
+/* 中等屏幕 (768px - 1199px) */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .main-content {
+        padding: 30px 15px;
+    }
+    
+    .content-grid {
+        gap: 30px;
+    }
+    
+    .card {
+        padding: 40px 30px;
+        border-radius: 35px;
+    }
+    
+    .main-timeline {
+        padding: 50px 30px 35px 30px;
+        border-radius: 25px;
+    }
+    
+    .activities-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* 小屏幕 (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+    .main-content {
+        padding: 25px 15px;
+    }
+    
+    .content-grid {
+        gap: 25px;
+    }
+    
+    .card {
+        padding: 30px 20px;
+        border-radius: 25px;
+    }
+    
+    .main-timeline {
+        padding: 40px 20px 30px 20px;
+        border-radius: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .main-timeline::before {
+        display: none;
+    }
+    
+    .timeline-milestone {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+    }
+}
+
+/* 超小屏幕 (480px以下) */
+@media (max-width: 479px) {
+    .main-content {
+        padding: 20px 10px;
+    }
+    
+    .content-grid {
+        gap: 20px;
+    }
+    
+    .card {
+        padding: 25px 15px;
+        border-radius: 20px;
+    }
+    
+    .main-timeline {
+        padding: 30px 15px 25px 15px;
+        border-radius: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .main-timeline::before {
+        display: none;
+    }
+    
+    .timeline-milestone {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .stat-card {
+        max-width: 100%;
+    }
+}
+
+/* 横屏模式优化 */
+@media (orientation: landscape) and (max-height: 600px) {
+    .main-content {
+        padding: 15px 20px;
+    }
+    
+    .card {
+        padding: 20px 25px;
+    }
+    
+    .main-timeline {
+        padding: 25px 20px 20px 20px;
+        margin: 20px auto;
+    }
+    
+    .activities-grid {
+        margin-top: 20px;
+    }
+}
+
+/* 高分辨率屏幕优化 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+    
+    .activity-card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+    
+    .stat-card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .main-content {
+        max-width: none;
+        padding: 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .activity-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .stat-card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+}
+
+/* 动画优化 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .card,
+    .activity-card,
+    .stat-card {
+        background-color: #2d2d2d;
+        color: #ffffff;
+    }
+    
+    .card-title {
+        color: #ffffff;
+    }
+    
+    .card-subtitle {
+        color: #cccccc;
+    }
+    
+    .milestone-label {
+        background: #2d2d2d;
+        color: #667eea;
+    }
+    
+    .activity-title {
+        color: #ffffff;
+    }
+    
+    .activity-subtitle {
+        color: #cccccc;
+    }
+    
+    .stat-number {
+        color: #667eea;
+    }
+    
+    .stat-label {
+        color: #cccccc;
+    }
+}
+
+/* 主页面特定样式支持 */
+/* 确保所有主页面使用的类名都能正确居中 */
+
+/* 旅行统计网格 */
+.travel-stats-grid {
+    width: 100% !important;
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 20px !important;
+    margin: 30px 0 !important;
+    justify-items: center !important;
+    text-align: center !important;
+}
+
+/* 旅行时间轴迷你版 */
+.travel-timeline-mini {
+    width: 100% !important;
+    margin: 30px auto !important;
+    text-align: center !important;
+    left: 0 !important;
+    right: 0 !important;
+    transform: none !important;
+}
+
+.timeline-items {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-top: 20px !important;
+}
+
+.timeline-item-mini {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: clamp(12px, 2.5vw, 14px);
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.timeline-item-mini .age {
+    font-size: clamp(10px, 2vw, 12px);
+    opacity: 0.9;
+}
+
+.timeline-item-mini .location {
+    font-size: clamp(11px, 2.2vw, 13px);
+    font-weight: 700;
+}
+
+/* 旅行引用 */
+.travel-quote {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px 0;
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(14px, 3vw, 16px);
+    color: #667eea;
+}
+
+.quote-icon {
+    font-size: clamp(16px, 3.5vw, 20px);
+    margin-right: 10px;
+}
+
+/* 活动时间轴条 */
+.activity-timeline {
+    margin: 15px 0;
+    text-align: center;
+}
+
+.timeline-bar {
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-text {
+    font-size: clamp(10px, 2vw, 12px);
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* 活动统计 */
+.activity-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px 0;
+    gap: 10px;
+}
+
+.activity-stats .stat-item {
+    text-align: center;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+.activity-stats .stat-value {
+    display: block;
+    font-size: clamp(14px, 3vw, 16px);
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.activity-stats .stat-label {
+    font-size: clamp(10px, 2vw, 12px);
+    color: #6b7280;
+}
+
+/* 音乐统计卡片 */
+.inspira-stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.stat-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(102, 126, 234, 0.3), transparent);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.stat-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle, #667eea 1px, transparent 1px),
+        radial-gradient(circle, #764ba2 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    opacity: 0.1;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* 响应式优化 */
+@media (max-width: 767px) {
+    .travel-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+    
+    .timeline-items {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .activity-stats {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+}
+
+@media (max-width: 479px) {
+    .travel-stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+    
+    .timeline-item-mini {
+        width: 100% !important;
+        max-width: 200px !important;
+    }
+}

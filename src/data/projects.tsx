@@ -70,6 +70,18 @@ type Skill = {
 };
 
 const PROJECT_SKILLS: { [key: string]: Skill } = {
+  html: {
+    title: "HTML",
+    bg: "black",
+    fg: "white",
+    icon: <SiJavascript />,
+  },
+  css: {
+    title: "CSS",
+    bg: "black",
+    fg: "white",
+    icon: <SiJavascript />,
+  },
   next: {
     title: "Next.js",
     bg: "black",
@@ -593,6 +605,113 @@ const projects: Project[] = [
               `${BASE_PATH}/jra/4.png`,
             ]}
           />
+        </div>
+      );
+    },
+  },
+  {
+    id: "academic-portfolio",
+    category: "Academic & Research",
+    title: "Academic Portfolio",
+    src: "/assets/projects-screenshots/codingducks/landing.png",
+    screenshots: ["landing.png"],
+    live: "/pages/academic/",
+    skills: {
+      frontend: [PROJECT_SKILLS.html, PROJECT_SKILLS.css, PROJECT_SKILLS.js],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Comprehensive showcase of academic achievements, research projects, and scholarly work. 
+            View my complete academic journey, publications, and research contributions.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyP className="font-mono mt-4">
+            Click "Visit Website" to explore my full academic portfolio.
+          </TypographyP>
+        </div>
+      );
+    },
+  },
+  {
+    id: "sports-achievements",
+    category: "Sports & Athletics",
+    title: "Sports Achievements",
+    src: "/assets/projects-screenshots/couponluxury/landing.png",
+    screenshots: ["landing.png"],
+    live: "/pages/sport/",
+    skills: {
+      frontend: [PROJECT_SKILLS.html, PROJECT_SKILLS.css, PROJECT_SKILLS.js],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Complete documentation of my athletic journey, including swimming records, 
+            competition results, and training achievements. Featuring videos, photos, 
+            and detailed performance statistics.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyP className="font-mono mt-4">
+            Click "Visit Website" to view my full sports portfolio.
+          </TypographyP>
+        </div>
+      );
+    },
+  },
+  {
+    id: "extracurricular-activities",
+    category: "Leadership & Activities",
+    title: "Extracurricular Activities",
+    src: "/assets/projects-screenshots/the-booking-desk/landing.png",
+    screenshots: ["landing.png"],
+    live: "/pages/activities/",
+    skills: {
+      frontend: [PROJECT_SKILLS.html, PROJECT_SKILLS.css, PROJECT_SKILLS.js],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Showcase of leadership roles, club activities, community service, and 
+            extracurricular involvement. Documenting my contributions beyond academics 
+            and athletics.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyP className="font-mono mt-4">
+            Click "Visit Website" to explore my activities portfolio.
+          </TypographyP>
+        </div>
+      );
+    },
+  },
+  {
+    id: "personal-interests",
+    category: "Personal & Hobbies",
+    title: "Personal Interests",
+    src: "/assets/projects-screenshots/portfolio/landing.png",
+    screenshots: ["landing.png"],
+    live: "/pages/personal/",
+    skills: {
+      frontend: [PROJECT_SKILLS.html, PROJECT_SKILLS.css, PROJECT_SKILLS.js],
+      backend: [],
+    },
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            Personal blog, hobbies, interests, and creative projects. A glimpse into 
+            my life outside of academics and sports, including music, photography, 
+            and other passions.
+          </TypographyP>
+          <ProjectsLinks live={this.live} repo={this.github} />
+          <TypographyP className="font-mono mt-4">
+            Click "Visit Website" to explore my personal page.
+          </TypographyP>
         </div>
       );
     },

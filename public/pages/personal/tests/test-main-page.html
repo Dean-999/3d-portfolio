@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页面响应式测试</title>
+    <link rel="stylesheet" href="responsive-styles.css">
+    <script src="test-responsive.js"></script>
+</head>
+<body>
+    <main class="main-content">
+        <div class="content-grid">
+            <!-- Time 卡片 -->
+            <div class="card time-card">
+                <h2 class="card-title">My Life Journey</h2>
+                <p class="card-subtitle">A visual story of how I've spent my time growing up. Learning has always been my passion - I'm curious about everything!</p>
+                
+                <!-- 主要时间轴 -->
+                <div class="main-timeline">
+                    <div class="timeline-milestone" data-age="2">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">Kindergarten</div>
+                        <div class="milestone-age">Age 2</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="6">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">Elementary</div>
+                        <div class="milestone-age">Age 6</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="12">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">Middle School</div>
+                        <div class="milestone-age">Age 12</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="14">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">High School Exam</div>
+                        <div class="milestone-age">Age 14</div>
+                    </div>
+                    <div class="timeline-milestone" data-age="15">
+                        <div class="milestone-dot"></div>
+                        <div class="milestone-label">USA</div>
+                        <div class="milestone-age">Age 15</div>
+                    </div>
+                </div>
+
+                <!-- 活动卡片网格 -->
+                <div class="activities-grid">
+                    <!-- 学习卡片 -->
+                    <div class="activity-card study-card" data-category="study">
+                        <div class="activity-icon">🚀</div>
+                        <div class="activity-title">Learning Journey</div>
+                        <div class="activity-subtitle">My lifelong passion</div>
+                        <div class="activity-timeline">
+                            <div class="timeline-bar" style="width: 100%; background: linear-gradient(90deg, #4A90E2, #667eea);"></div>
+                            <span class="timeline-text">Age 2-16 (14 years)</span>
+                        </div>
+                        <div class="activity-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">90%</span>
+                                <span class="stat-label">Kindergarten</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-value">70%</span>
+                                <span class="stat-label">High School</span>
+                            </div>
+                        </div>
+                        <div class="activity-tag">Core Activity</div>
+                    </div>
+
+                    <!-- 围棋卡片 -->
+                    <div class="activity-card go-card" data-category="go">
+                        <div class="activity-icon">🎯</div>
+                        <div class="activity-title">Go Strategy</div>
+                        <div class="activity-subtitle">Ancient wisdom game</div>
+                        <div class="activity-timeline">
+                            <div class="timeline-bar" style="width: 33%; background: linear-gradient(90deg, #7ED321, #96CEB4);"></div>
+                            <span class="timeline-text">Age 7-11 (4 years)</span>
+                        </div>
+                        <div class="activity-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">15%</span>
+                                <span class="stat-label">Time Share</span>
+                            </div>
+                        </div>
+                        <div class="activity-tag">Strategic Thinking</div>
+                    </div>
+
+                    <!-- 矿物研究卡片 -->
+                    <div class="activity-card minerals-card" data-category="minerals">
+                        <div class="activity-icon">💎</div>
+                        <div class="activity-title">Mineral Research</div>
+                        <div class="activity-subtitle">Earth's hidden treasures</div>
+                        <div class="activity-timeline">
+                            <div class="timeline-bar" style="width: 53%; background: linear-gradient(90deg, #50E3C2, #4ECDC4);"></div>
+                            <span class="timeline-text">Age 9-16+ (7+ years)</span>
+                        </div>
+                        <div class="activity-stats">
+                            <div class="stat-item">
+                                <span class="stat-value">10%</span>
+                                <span class="stat-label">Time Share</span>
+                            </div>
+                        </div>
+                        <div class="activity-tag">Long-term Interest</div>
+                    </div>
+                </div>
+
+                <!-- 旅行统计网格 -->
+                <div class="travel-stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-icon">🌍</div>
+                        <div class="stat-number">11</div>
+                        <div class="stat-label">Destinations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🏙️</div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Cities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">🗺️</div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Continents</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Years</div>
+                    </div>
+                </div>
+
+                <!-- 旅行时间轴迷你版 -->
+                <div class="travel-timeline-mini">
+                    <h4>Journey Timeline</h4>
+                    <div class="timeline-items">
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 3</span>
+                            <span class="location">Thailand</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 6</span>
+                            <span class="location">Taiwan</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 8</span>
+                            <span class="location">Xi'an</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 9</span>
+                            <span class="location">Hong Kong + Macau</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 10</span>
+                            <span class="location">Singapore + Malaysia</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 12</span>
+                            <span class="location">Dubai</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 14</span>
+                            <span class="location">Yunnan + Guizhou</span>
+                        </div>
+                        <div class="timeline-item-mini">
+                            <span class="age">Age 15</span>
+                            <span class="location">USA</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 旅行引用 -->
+                <div class="travel-quote">
+                    <span class="quote-icon">💭</span>
+                    "Every journey shapes a new perspective"
+                </div>
+
+                <!-- 音乐统计 -->
+                <div class="stats-grid">
+                    <div class="stat-card inspira-stat-card">
+                        <div class="stat-decoration">
+                            <div class="stat-glow"></div>
+                            <div class="stat-particles"></div>
+                        </div>
+                        <div class="stat-icon">🎧</div>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Songs</div>
+                    </div>
+                    <div class="stat-card inspira-stat-card">
+                        <div class="stat-decoration">
+                            <div class="stat-glow"></div>
+                            <div class="stat-particles"></div>
+                        </div>
+                        <div class="stat-icon">🎵</div>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Albums</div>
+                    </div>
+                    <div class="stat-card inspira-stat-card">
+                        <div class="stat-decoration">
+                            <div class="stat-glow"></div>
+                            <div class="stat-particles"></div>
+                        </div>
+                        <div class="stat-icon">🎭</div>
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">Genres</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 测试信息显示 -->
+    <div style="position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); color: white; padding: 15px; border-radius: 10px; font-size: 12px; z-index: 1000;">
+        <div><strong>主页面响应式测试</strong></div>
+        <div>✅ 使用 responsive-styles.css</div>
+        <div>✅ 包含所有主页面类名</div>
+        <div>✅ 强制居中布局</div>
+        <div>✅ 响应式设计</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - SamuelQ Personal Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            width: 100%;
+            height: 300px;
+            border: 2px dashed #ccc;
+            margin: 10px 0;
+        }
+        .world-map-container {
+            width: 100%;
+            height: 400px;
+            border: 2px dashed #ccc;
+            margin: 10px 0;
+        }
+        .activity-card {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Page - SamuelQ Personal Website</h1>
+    
+    <div class="debug-section">
+        <h2>Chart.js Test</h2>
+        <p>Testing if Chart.js is working:</p>
+        <div class="chart-container">
+            <canvas id="testChart"></canvas>
+        </div>
+        <button onclick="testChart()">Test Chart</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>World Map Test</h2>
+        <p>Testing if World Map component is working:</p>
+        <div id="testWorldMap" class="world-map-container"></div>
+        <button onclick="testWorldMap()">Test World Map</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>Activity Cards Test</h2>
+        <p>Testing if activity cards are working:</p>
+        <div class="activity-card animate-grid-card">
+            <div class="animate-grid-bg"></div>
+            <div class="activity-icon">🎯</div>
+            <div class="activity-tag">TEST</div>
+            <div class="activity-title">Test Card</div>
+            <div class="activity-subtitle">Testing functionality</div>
+        </div>
+        <button onclick="testActivityCards()">Test Activity Cards</button>
+    </div>
+
+    <div class="debug-section">
+        <h2>Console Logs</h2>
+        <div id="logOutput" class="log"></div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="world-map.js"></script>
+    <script src="3d-card.js"></script>
+    <script src="animate-grid.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Debug logging function
+        function log(message) {
+            const logOutput = document.getElementById('logOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            logOutput.textContent += `[${timestamp}] ${message}\n`;
+            logOutput.scrollTop = logOutput.scrollHeight;
+            console.log(message);
+        }
+
+        // Test Chart.js
+        function testChart() {
+            try {
+                const ctx = document.getElementById('testChart');
+                if (!ctx) {
+                    log('ERROR: Test chart canvas not found');
+                    return;
+                }
+
+                const testChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['A', 'B', 'C'],
+                        datasets: [{
+                            label: 'Test Data',
+                            data: [10, 20, 30],
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+
+                log('SUCCESS: Test chart created successfully');
+            } catch (error) {
+                log(`ERROR: Failed to create test chart: ${error.message}`);
+            }
+        }
+
+        // Test World Map
+        function testWorldMap() {
+            try {
+                const container = document.getElementById('testWorldMap');
+                if (!container) {
+                    log('ERROR: Test world map container not found');
+                    return;
+                }
+
+                const testData = {
+                    dots: [
+                        { start: { lat: 0, lng: 0 }, label: "Test Point" }
+                    ],
+                    lineColor: "#0EA5E9",
+                    mapColor: "#1e293b",
+                    mapBgColor: "#0f172a"
+                };
+
+                const worldMap = new WorldMap(container, testData);
+                log('SUCCESS: Test world map created successfully');
+            } catch (error) {
+                log(`ERROR: Failed to create test world map: ${error.message}`);
+            }
+        }
+
+        // Test Activity Cards
+        function testActivityCards() {
+            try {
+                const cards = document.querySelectorAll('.animate-grid-card');
+                log(`Found ${cards.length} activity cards`);
+                
+                if (cards.length > 0) {
+                    cards[0].style.border = '2px solid green';
+                    log('SUCCESS: Activity card styling applied');
+                }
+            } catch (error) {
+                log(`ERROR: Failed to test activity cards: ${error.message}`);
+            }
+        }
+
+        // Clear log
+        function clearLog() {
+            document.getElementById('logOutput').textContent = '';
+        }
+
+        // Page load logging
+        window.addEventListener('load', function() {
+            log('Page loaded successfully');
+            log('Testing component availability...');
+            
+            // Check Chart.js
+            if (typeof Chart !== 'undefined') {
+                log('SUCCESS: Chart.js is available');
+            } else {
+                log('ERROR: Chart.js is not available');
+            }
+            
+            // Check WorldMap
+            if (typeof WorldMap !== 'undefined') {
+                log('SUCCESS: WorldMap class is available');
+            } else {
+                log('ERROR: WorldMap class is not available');
+            }
+            
+            // Check other components
+            log('Checking for other components...');
+        });
+
+        // Error handling
+        window.addEventListener('error', function(event) {
+            log(`ERROR: ${event.error.message} at ${event.filename}:${event.lineno}`);
+        });
+    </script>
+</body>
+</html>

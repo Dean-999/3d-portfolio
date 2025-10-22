@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地图功能测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .map-container {
+            width: 100%;
+            height: 400px;
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .test-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .test-button:hover {
+            background: #5a6fd8;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🗺️ 地图功能测试</h1>
+        
+        <div>
+            <button class="test-button" onclick="testStaticMap()">测试静态地图</button>
+            <button class="test-button" onclick="testInteractiveMap()">测试交互式地图</button>
+            <button class="test-button" onclick="testTravelDetails()">测试旅行详情</button>
+        </div>
+        
+        <div id="worldMapCanvas" class="map-container">
+            <!-- 地图将在这里显示 -->
+        </div>
+        
+        <div id="console-output" style="background: #f0f0f0; padding: 10px; border-radius: 5px; margin-top: 20px;">
+            <h3>控制台输出：</h3>
+            <div id="log-content"></div>
+        </div>
+    </div>
+
+    <!-- Leaflet CSS 和 JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // 日志函数
+        function log(message) {
+            const logContent = document.getElementById('log-content');
+            const timestamp = new Date().toLocaleTimeString();
+            logContent.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            console.log(message);
+        }
+        
+        // 测试静态地图
+        function testStaticMap() {
+            log('🗺️ 开始测试静态地图...');
+            
+            const mapContainer = document.getElementById('worldMapCanvas');
+            if (!mapContainer) {
+                log('❌ 地图容器不存在');
+                return;
+            }
+            
+            mapContainer.innerHTML = `
+                <div style="
+                    width: 100%; 
+                    height: 100%; 
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border-radius: 10px;
+                    position: relative;
+                    overflow: hidden;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    text-align: center;
+                ">
+                    <div>
+                        <div style="font-size: 48px; margin-bottom: 16px;">🗺️</div>
+                        <div style="font-size: 24px; font-weight: bold; margin-bottom: 8px;">World Map</div>
+                        <div style="font-size: 14px; opacity: 0.9;">8 Countries • 12+ Cities • 3 Continents</div>
+                    </div>
+                </div>
+            `;
+            
+            log('✅ 静态地图已显示');
+        }
+        
+        // 测试交互式地图
+        function testInteractiveMap() {
+            log('🗺️ 开始测试交互式地图...');
+            
+            const mapContainer = document.getElementById('worldMapCanvas');
+            if (!mapContainer) {
+                log('❌ 地图容器不存在');
+                return;
+            }
+            
+            if (typeof L === 'undefined') {
+                log('❌ Leaflet库未加载');
+                return;
+            }
+            
+            try {
+                // 创建地图
+                const map = L.map(mapContainer, {
+                    center: [20, 0],
+                    zoom: 2,
+                    zoomControl: false
+                });
+                
+                // 添加地图图层
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                
+                // 添加测试标记
+                L.marker([0, 0]).addTo(map).bindPopup('World Center');
+                
+                log('✅ 交互式地图创建成功');
+                
+            } catch (error) {
+                log('❌ 创建交互式地图失败: ' + error.message);
+            }
+        }
+        
+        // 测试旅行详情
+        function testTravelDetails() {
+            log('🚀 开始测试旅行详情...');
+            
+            const card = document.createElement('div');
+            card.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                border: 2px solid #667eea;
+                border-radius: 16px;
+                padding: 30px;
+                max-width: 500px;
+                width: 90%;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                z-index: 10000;
+                text-align: center;
+            `;
+            
+            card.innerHTML = `
+                <h3 style="color: #667eea; margin-bottom: 20px;">✈️ Travel Journey</h3>
+                <div style="margin-bottom: 20px;">
+                    <div style="font-size: 24px; font-weight: bold; color: #333;">8 Countries</div>
+                    <div style="color: #666;">Visited around the world</div>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    font-weight: bold;
+                ">Close</button>
+            `;
+            
+            document.body.appendChild(card);
+            log('✅ 旅行详情卡片已显示');
+        }
+        
+        // 页面加载完成后自动测试静态地图
+        window.addEventListener('load', function() {
+            log('🚀 页面加载完成');
+            setTimeout(() => {
+                testStaticMap();
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

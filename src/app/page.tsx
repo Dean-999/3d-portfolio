@@ -8,10 +8,12 @@ import SkillsSection from "@/components/sections/skills";
 import ProjectsSection from "@/components/sections/projects";
 import ContactSection from "@/components/sections/contact";
 import HeroSection from "@/components/sections/hero";
+import Navigation from "@/components/navigation";
 
 function MainPage() {
   return (
     <>
+      <Navigation />
       <SmoothScroll>
         <main className={cn("bg-slate-100 dark:bg-transparent")}>
           <div className="top-0 z-0 fixed w-full h-screen">
