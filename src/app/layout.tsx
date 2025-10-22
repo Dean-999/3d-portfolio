@@ -77,14 +77,9 @@ export default function RootLayout({
             quantity={100}
           />
           <Preloader>
-            <SocketContextProvider>
-              <RemoteCursors />
-              <TooltipProvider>
-                <Header />
-                {children}
-                <Footer />
-              </TooltipProvider>
-            </SocketContextProvider>
+            <TooltipProvider>
+              {children}
+            </TooltipProvider>
             <Toaster />
             <EasterEggs />
             <ElasticCursor />
